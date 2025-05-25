@@ -10,7 +10,7 @@ This is a simple and lightweight web application for running raffles. Users can 
 - Pointer triangle clearly indicates the selected winner
 - Confetti animation upon winner selection
 - Responsive layout for desktop and mobile devices
-- Fully client-side, no backend or database required
+- Fully client-side
 
 ## Technologies Used
 
