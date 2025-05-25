@@ -1,6 +1,11 @@
+<!--
+  Raffle Prize Chooser Application HTML
+  - This file defines the structure of the web app UI.
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Metadata and external resources -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Raffle Prize Chooser</title>
@@ -8,22 +13,65 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
+  <!-- Main container for app layout -->
   <div class="container">
     <h1>Raffle Prize Chooser</h1>
 
-    <label for="numParticipants">Number of Participants:</label>
-    <input type="number" id="numParticipants" min="1" />
+    <!-- Dark mode toggle switch -->
+    <div class="theme-toggle">
+      <label>
+        <input type="checkbox" id="darkModeToggle" />
+        Dark Mode
+      </label>
+    </div>
+
+    <!-- User input for number of participants -->
+    <div class="participant-count-row">
+      <label for="numParticipants">Number of Participants:</label>
+      <input type="number" id="numParticipants" min="1" />
+    </div>
+
+    <!-- Button to generate participant input fields -->
     <button onclick="generateInputs()">Create Inputs</button>
 
+    <!-- Form to input participant names and weights -->
     <form id="participantForm"></form>
 
+    <!-- Buttons for winner selection and app reset -->
     <button id="pickWinner" onclick="pickWinner()" style="display:none;">Pick Winner</button>
     <button id="resetBtn" onclick="resetApp()" style="display:none;">Reset</button>
 
+    <!-- Roulette wheel canvas display -->
     <canvas id="wheelCanvas" width="300" height="300" style="display: none;"></canvas>
+
+    <!-- Winner display area -->
     <div id="winnerResult"></div>
   </div>
 
+  <!-- Load main JavaScript functionality -->
   <script src="script.js"></script>
+
+  <!-- Initialize and persist dark mode setting on load -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggle = document.getElementById("darkModeToggle");
+      const isDark = localStorage.getItem("theme") === "dark";
+
+      if (isDark) {
+        document.body.classList.add("dark");
+        toggle.checked = true;
+      }
+
+      toggle.addEventListener("change", () => {
+        if (toggle.checked) {
+          document.body.classList.add("dark");
+          localStorage.setItem("theme", "dark");
+        } else {
+          document.body.classList.remove("dark");
+          localStorage.setItem("theme", "light");
+        }
+      });
+    });
+  </script>
 </body>
 </html>
