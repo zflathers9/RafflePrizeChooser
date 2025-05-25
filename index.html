@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raffle Prize Chooser</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Raffle Prize Chooser</h1>
+
+    <label for="numParticipants">Number of Participants:</label>
+    <input type="number" id="numParticipants" min="1" />
+    <button onclick="generateInputs()">Create Inputs</button>
+
+    <form id="participantForm"></form>
+
+    <button id="pickWinner" onclick="pickWinner()" style="display:none;">Pick Winner</button>
+    <button id="resetBtn" onclick="resetApp()" style="display:none;">Reset</button>
+
+    <canvas id="wheelCanvas" width="300" height="300" style="display: none;"></canvas>
+    <div id="winnerResult"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
